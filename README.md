@@ -32,12 +32,12 @@ If the storage type is `azure`, the CLI reads three files which specify the acco
 
 If the storage type is not given, or is the empty string, the CLI assumes that it should use the AWS S3 API to talk to an object storage system.
 
-In this case, the CLI requires command line flags to determine the location of the S3 API compatible server. See below for each command line flag and its default.
+In this case, the CLI requires information on where the S3 API compatible server is located, along with the expected authentication/authorization information.
 
-- `--host` (the value of the `DEIS_MINIO_SERVICE_HOST` environment variable). Note that if the value of this flag starts with `$`, it will be interpreted as an environment variable.
-- `--port` (the value of the `DEIS_MINIO_SERVICE_PORT` environment variable). Note that if the value of this flag starts with `$`, it will be interpreted as an environment variable.
+It gets the location information from environment variables, and assumes that any value that starts with `$` is itself an environment variable. It also gets the auth information from three files whose locations are specified by environment variables as well. See below for the list of environment variables and their defaults.
 
-The CLI also requires authorization and authentication information and reads two files to get it. Each file location can be configured by an environment variable. Each environment variable and its default is listed below.
-
+- `S3_HOST` (`$DEIS_MINIO_SERVICE_HOST`)
+- `S3_PORT` (`$DEIS_MINIO_SERVICE_PORT`)
 - `ACCESS_KEY_FILE` (`/var/run/secrets/deis/objectstore/creds/accesskey`)
 - `ACCESS_SECRET_FILE` (`/var/run/secrets/deis/objectstore/creds/secretkey`)
+- `BUCKET_FILE` (`/var/run/secrets/deis/objectstore/creds/bucket`)
