@@ -4,6 +4,7 @@ import (
 	"fmt"
 )
 
+// StorageType represents the type of storage that a CLI command should work with
 type StorageType string
 
 func (c StorageType) String() string {
