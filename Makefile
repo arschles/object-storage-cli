@@ -9,7 +9,7 @@ bootstrap:
 	${DEV_ENV_CMD} glide install
 
 build:
-	${DEV_ENV_CMD} go build
+	${DEV_ENV_CMD} go build -tags='include_gcs'
 
 test:
 	${DEV_ENV_CMD} go test $$(glide nv)

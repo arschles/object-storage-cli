@@ -26,11 +26,11 @@ func (s S3) CreateDriver() (driver.StorageDriver, error) {
 	}
 	keyBytes, secretBytes, regionBytes, bucketBytes := files[0], files[1], files[2], files[3]
 	params := s3.DriverParameters{
-		AccessKey:   string(keyBytes),
-		SecretKey:   string(secretBytes),
-		Bucket:      string(bucketBytes),
-		Region:      string(regionBytes),
-		EndpointURL: endpointURL(string(regionBytes)),
+		AccessKey:      string(keyBytes),
+		SecretKey:      string(secretBytes),
+		Bucket:         string(bucketBytes),
+		Region:         string(regionBytes),
+		RegionEndpoint: endpointURL(string(regionBytes)),
 	}
 	return s3.New(params)
 }
