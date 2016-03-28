@@ -1,7 +1,7 @@
 package config
 
 import (
-	driver "github.com/deis/distribution/registry/storage/driver"
+	driver "github.com/docker/distribution/registry/storage/driver"
 )
 
 type Config interface {
