@@ -1,5 +1,7 @@
 package: github.com/arschles/object-storage-cli
 import:
-- package: github.com/deis/distribution/registry/storage/driver
+- package: github.com/docker/distribution/registry/storage/driver
+  repo: https://github.com/deis/distribution
+  vcs: git
 - package: github.com/kelseyhightower/envconfig
 - package: github.com/codegangsta/cli

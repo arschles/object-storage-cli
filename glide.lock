@@ -1,28 +1,68 @@
-hash: 3e60ce63d28877cc5a1869755dc3242ebe368fe639b6c66b28c07eea37a539d2
-updated: 2016-03-28T13:20:13.953422318-07:00
+hash: 595b5d69686b28be8ebeb6f67c0d01ceb01da0dc9cd6cee8e5b1f5add7cd33bb
+updated: 2016-03-28T14:00:46.225029379-07:00
 imports:
+- name: github.com/aws/aws-sdk-go
+  version: 49c3892b61af1d4996292a3025f36e4dfa25eaee
+  subpackages:
+  - aws
+  - aws/awserr
+  - aws/credentials
+  - aws/credentials/ec2rolecreds
+  - aws/ec2metadata
+  - aws/request
+  - aws/session
+  - service/s3
+  - aws/client
+  - aws/client/metadata
+  - aws/awsutil
+  - aws/corehandlers
+  - aws/defaults
+  - private/endpoints
+  - private/protocol
+  - private/protocol/restxml
+  - private/signer/v4
+  - private/waiter
+  - private/protocol/query
+  - private/protocol/rest
+  - private/protocol/xml/xmlutil
+  - private/protocol/query/queryutil
 - name: github.com/codegangsta/cli
   version: bc465becccd1d527002fda095fc3c19d9c115029
 - name: github.com/deis/distribution
   version: 1a90b2bdf7d8773ae4d7bcac8e7d61cb3c57c550
   subpackages:
   - registry/storage/driver
+  - registry/storage/driver/s3-aws
 - name: github.com/docker/distribution
-  version: 72ec74834b2b84441791b4fc16c431c6b0d5a742
+  version: 1a90b2bdf7d8773ae4d7bcac8e7d61cb3c57c550
+  repo: https://github.com/deis/distribution
+  vcs: git
   subpackages:
+  - registry/storage/driver
   - context
+  - registry/client/transport
+  - registry/storage/driver/base
+  - registry/storage/driver/factory
   - uuid
+- name: github.com/go-ini/ini
+  version: 12f418cc7edc5a618a51407b7ac1f1f512139df3
 - name: github.com/gorilla/context
   version: 14f550f51af52180c2eefed15e5fd18d63c0a64a
 - name: github.com/gorilla/mux
   version: e444e69cbd2e2e3e0749a2f3c717cec491552bbf
+- name: github.com/jmespath/go-jmespath
+  version: 0b12d6b521d83fc7f755e7cfc1b1fbdd35a01a74
 - name: github.com/kelseyhightower/envconfig
   version: cea086319492c3940683ea5e122aa5de70a33923
 - name: github.com/Sirupsen/logrus
-  version: 55eb11d21d2a31a3cc93838241d04800f52e823d
+  version: 4b6ea7319e214d98c938f12692336f7ca9348d6b
 - name: golang.org/x/net
   version: 2cba614e8ff920c60240d2677bc019af32ee04e5
   subpackages:
   - context
   - trace
+- name: golang.org/x/sys
+  version: 320cb01ddbbf0473674c2585f9b6e245721de355
+  subpackages:
+  - unix
 devImports: []
