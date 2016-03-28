@@ -18,6 +18,7 @@ func endpointURL(region string) string {
 	return fmt.Sprintf("s3-%s.amazonaws.com", region)
 }
 
+// CreateDriver is the Config interface implementation
 func (s S3) CreateDriver() (driver.StorageDriver, error) {
 	files, err := readFiles(s.AccessKeyFile, s.SecretKeyFile, s.RegionFile, s.BucketFile)
 	if err != nil {
