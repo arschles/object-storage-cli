@@ -48,10 +48,10 @@ func (e Empty) CreateDriver() (driver.StorageDriver, error) {
 		return nil, errMissingPort
 	}
 	params := s3.DriverParameters{
-		AccessKey:   string(files[0]),
-		SecretKey:   string(files[1]),
-		Bucket:      string(files[2]),
-		EndpointURL: fmt.Sprintf("%s:%s", host, port),
+		AccessKey:      string(files[0]),
+		SecretKey:      string(files[1]),
+		Bucket:         string(files[2]),
+		RegionEndpoint: fmt.Sprintf("%s:%s", host, port),
 	}
 	return s3.New(params)
 }
