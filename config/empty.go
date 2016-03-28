@@ -10,5 +10,5 @@ type Empty struct {
 }
 
 func (e Empty) CreateDriver() (driver.StorageDriver, error) {
-
+	return nil, nil
 }

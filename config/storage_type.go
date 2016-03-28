@@ -1,5 +1,9 @@
 package config
 
+import (
+	"fmt"
+)
+
 type StorageType string
 
 func (c StorageType) String() string {

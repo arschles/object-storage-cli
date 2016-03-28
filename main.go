@@ -15,7 +15,7 @@ func main() {
 	app.Flags = []cli.Flag{
 		cli.StringFlag{
 			Name:  config.StorageTypeFlag,
-			Value: s3ConfigType.String(),
+			Value: config.S3StorageType.String(),
 			Usage: "Specify the type of the object storage system",
 		},
 	}

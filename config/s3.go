@@ -1,10 +1,11 @@
 package config
 
 import (
+	"fmt"
 	"io/ioutil"
 
-	"github.com/deis/distribution/registry/storage/driver"
-	s3 "github.com/deis/distribution/registry/storage/driver/s3-aws"
+	"github.com/docker/distribution/registry/storage/driver"
+	s3 "github.com/docker/distribution/registry/storage/driver/s3-aws"
 )
 
 type S3 struct {

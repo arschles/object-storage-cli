@@ -10,5 +10,5 @@ type GCS struct {
 }
 
 func (g GCS) CreateDriver() (driver.StorageDriver, error) {
-
+	return nil, nil
 }
