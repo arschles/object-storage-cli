@@ -32,9 +32,5 @@ func (s S3) CreateDriver() (driver.StorageDriver, error) {
 		Region:      string(regionBytes),
 		EndpointURL: endpointURL(string(regionBytes)),
 	}
-	d, err := s3.New(params)
-	if err != nil {
-		return nil, err
-	}
-	return d, nil
+	return s3.New(params)
 }
