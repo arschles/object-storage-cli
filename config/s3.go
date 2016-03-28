@@ -2,7 +2,6 @@ package config
 
 import (
 	"fmt"
-	"io/ioutil"
 
 	"github.com/docker/distribution/registry/storage/driver"
 	s3 "github.com/docker/distribution/registry/storage/driver/s3-aws"
@@ -20,22 +19,11 @@ func endpointURL(region string) string {
 }
 
 func (s S3) CreateDriver() (driver.StorageDriver, error) {
-	keyBytes, err := ioutil.ReadFile(s.AccessKeyFile)
+	files, err := readFiles(s.AccessKeyFile, s.SecretKeyFile, s.RegionFile, s.BucketFile)
 	if err != nil {
 		return nil, err
 	}
-	secretBytes, err := ioutil.ReadFile(s.SecretKeyFile)
-	if err != nil {
-		return nil, err
-	}
-	regionBytes, err := ioutil.ReadFile(s.RegionFile)
-	if err != nil {
-		return nil, err
-	}
-	bucketBytes, err := ioutil.ReadFile(s.BucketFile)
-	if err != nil {
-		return nil, err
-	}
+	keyBytes, secretBytes, regionBytes, bucketBytes := files[0], files[1], files[2], files[3]
 	params := s3.DriverParameters{
 		AccessKey:   string(keyBytes),
 		SecretKey:   string(secretBytes),
