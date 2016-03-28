@@ -1,0 +1,5 @@
+package: github.com/arschles/object-storage-cli
+import:
+- package: github.com/deis/distribution/registry/storage/driver
+- package: github.com/kelseyhightower/envconfig
+- package: github.com/codegangsta/cli

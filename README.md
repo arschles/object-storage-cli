@@ -10,6 +10,7 @@ If the storage type is `s3`, the CLI reads three files which specify access key,
 - `ACCESS_KEY_FILE` (`/var/run/secrets/deis/objectstore/creds/accesskey`)
 - `SECRET_KEY_FILE` (`/var/run/secrets/deis/objectstore/creds/secretkey`)
 - `REGION_FILE` (`/var/run/secrets/deis/objectstore/creds/region`)
+- `BUCKET_FILE` (`/var/run/secrets/deis/objectstore/creds/bucket`)
 
 ## `gcs`
 

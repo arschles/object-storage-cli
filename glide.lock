@@ -1,0 +1,28 @@
+hash: 3e60ce63d28877cc5a1869755dc3242ebe368fe639b6c66b28c07eea37a539d2
+updated: 2016-03-28T13:20:13.953422318-07:00
+imports:
+- name: github.com/codegangsta/cli
+  version: bc465becccd1d527002fda095fc3c19d9c115029
+- name: github.com/deis/distribution
+  version: 1a90b2bdf7d8773ae4d7bcac8e7d61cb3c57c550
+  subpackages:
+  - registry/storage/driver
+- name: github.com/docker/distribution
+  version: 72ec74834b2b84441791b4fc16c431c6b0d5a742
+  subpackages:
+  - context
+  - uuid
+- name: github.com/gorilla/context
+  version: 14f550f51af52180c2eefed15e5fd18d63c0a64a
+- name: github.com/gorilla/mux
+  version: e444e69cbd2e2e3e0749a2f3c717cec491552bbf
+- name: github.com/kelseyhightower/envconfig
+  version: cea086319492c3940683ea5e122aa5de70a33923
+- name: github.com/Sirupsen/logrus
+  version: 55eb11d21d2a31a3cc93838241d04800f52e823d
+- name: golang.org/x/net
+  version: 2cba614e8ff920c60240d2677bc019af32ee04e5
+  subpackages:
+  - context
+  - trace
+devImports: []
