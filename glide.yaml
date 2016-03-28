@@ -1,7 +1,12 @@
 package: github.com/arschles/object-storage-cli
 import:
-- package: github.com/docker/distribution/registry/storage/driver
+- package: github.com/docker/distribution
   repo: https://github.com/deis/distribution
   vcs: git
+  subpackages:
+  - registry/storage/driver
 - package: github.com/kelseyhightower/envconfig
 - package: github.com/codegangsta/cli
+- package: github.com/Azure/azure-sdk-for-go
+  subpackages:
+  - storage
