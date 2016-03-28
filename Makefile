@@ -10,3 +10,6 @@ bootstrap:
 
 build:
 	${DEV_ENV_CMD} go build
+
+test:
+	${DEV_ENV_CMD} go test $$(glide nv)
