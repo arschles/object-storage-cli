@@ -5,6 +5,7 @@ import (
 	azure "github.com/docker/distribution/registry/storage/driver/azure"
 )
 
+// Azure is the Config implementation for the Azure client
 type Azure struct {
 	AccountNameFile string `envconfig:"ACCOUNT_NAME_FILE" default:"/var/run/secrets/deis/objectstore/creds/accountname"`
 	AccountKeyFile  string `envconfig:"ACCOUNT_KEY_FILE" default:"/var/run/secrets/deis/objectstore/creds/accountkey"`

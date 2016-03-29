@@ -10,6 +10,7 @@ const (
 	keyFileParam = "keyfile"
 )
 
+// GCS is the Config implementation for the GCS client
 type GCS struct {
 	KeyFile    string `envconfig:"KEY_FILE" default:"/var/run/secrets/deis/objectstore/creds/key.json"`
 	BucketFile string `envconfig:"BUCKET_FILE" default:"/var/run/secrets/deis/objectstore/creds/bucket"`

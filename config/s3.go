@@ -7,6 +7,7 @@ import (
 	s3 "github.com/docker/distribution/registry/storage/driver/s3-aws"
 )
 
+// S3 is the Config implementation for the S3 client
 type S3 struct {
 	AccessKeyFile string `envconfig:"ACCESS_KEY_FILE" default:"/var/run/secrets/deis/objectstore/creds/accesskey"`
 	SecretKeyFile string `envconfig:"SECRET_KEY_FILE" default:"/var/run/secrets/deis/objectstore/creds/secretkey"`
