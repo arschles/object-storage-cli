@@ -12,10 +12,14 @@ func (c StorageType) String() string {
 }
 
 const (
-	S3StorageType    StorageType = "s3"
-	GCSStorageType   StorageType = "gcs"
+	// S3StorageType is the storage type for Amazon S3. See https://aws.amazon.com/s3/ for more information
+	S3StorageType StorageType = "s3"
+	// GCSStorageType is the storage type for Google Cloud Storage. See https://cloud.google.com/storage/ for more information
+	GCSStorageType StorageType = "gcs"
+	// AzureStorageType is the storage type for Azure Blob Storage. See https://azure.microsoft.com/en-us/services/storage/ for more information
 	AzureStorageType StorageType = "azure"
-	EmptyStorageType StorageType = ""
+	// MinioStorageType is the storage type for Minoi. See https://minio.io/ for more information
+	MinioStorageType StorageType = ""
 )
 
 // ErrUnknownStorageType is an error that indicates that a given storage type string is unknown
@@ -37,9 +41,9 @@ func StorageTypeFromString(s string) (StorageType, error) {
 		return GCSStorageType, nil
 	case AzureStorageType.String():
 		return AzureStorageType, nil
-	case EmptyStorageType.String():
-		return EmptyStorageType, nil
+	case MinioStorageType.String():
+		return MinioStorageType, nil
 	default:
-		return EmptyStorageType, ErrUnknownStorageType{typeStr: s}
+		return "", ErrUnknownStorageType{typeStr: s}
 	}
 }

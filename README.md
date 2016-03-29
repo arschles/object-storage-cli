@@ -28,11 +28,11 @@ If the storage type is `azure`, the CLI reads three files which specify the acco
 - `ACCOUNT_KEY_FILE` (`/var/run/secrets/deis/objectstore/creds/accountkey`)
 - `CONTAINER_FILE` (`/var/run/secrets/deis/objectstore/creds/container`)
 
-## Empty String
+## `minio`
 
-If the storage type is not given, or is the empty string, the CLI assumes that it should use the AWS S3 API to talk to an object storage system.
+If the storage type is `minio`, the CLI assumes that it should use the AWS S3 API to talk to the `minio` server at a given address.
 
-In this case, the CLI requires information on where the S3 API compatible server is located, along with the expected authentication/authorization information.
+In this case, the CLI requires information on where the Minio server is located, along with the authentication/authorization information.
 
 It gets the location information from environment variables, and assumes that any value that starts with `$` is itself an environment variable. It also gets the auth information from three files whose locations are specified by environment variables as well. See below for the list of environment variables and their defaults.
 

@@ -18,7 +18,7 @@ var (
 	errMissingPort = errors.New("missing s3 port")
 )
 
-type Empty struct {
+type Minio struct {
 	AccessKeyFile    string `envconfig:"ACCESS_KEY_FILE" default:"/var/run/secrets/deis/objectstore/creds/accesskey"`
 	AccessSecretFile string `envconfig:"ACCESS_SECRET_FILE" default:"/var/run/secrets/deis/objectstore/creds/secretkey"`
 	BucketFile       string `envconfig:"BUCKET_FILE" default:"/var/run/secrets/deis/objectstore/creds/bucket"`
@@ -34,7 +34,7 @@ func parseEnvVar(val string) string {
 }
 
 // CreateDriver is the Config interface implementation
-func (e Empty) CreateDriver() (driver.StorageDriver, error) {
+func (e Minio) CreateDriver() (driver.StorageDriver, error) {
 	files, err := readFiles(e.AccessKeyFile, e.AccessSecretFile, e.BucketFile)
 	if err != nil {
 		return nil, err
@@ -57,6 +57,6 @@ func (e Empty) CreateDriver() (driver.StorageDriver, error) {
 }
 
 // String is the fmt.Stringer interface implementation
-func (e Empty) String() string {
-	return EmptyStorageType.String()
+func (e Minio) String() string {
+	return MinioStorageType.String()
 }

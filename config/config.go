@@ -35,8 +35,8 @@ func FromStorageType(st StorageType) (Config, error) {
 		conf = new(GCS)
 	case AzureStorageType:
 		conf = new(Azure)
-	case EmptyStorageType:
-		conf = new(Empty)
+	case MinioStorageType:
+		conf = new(Minio)
 	default:
 		return nil, ErrUnsupportedStorageType{st: st}
 	}
