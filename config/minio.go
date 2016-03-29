@@ -36,7 +36,7 @@ func parseEnvVar(val string) string {
 
 // CreateDriver is the Config interface implementation
 func (e Minio) CreateDriver() (driver.StorageDriver, error) {
-	files, err := readFiles(e.AccessKeyFile, e.AccessSecretFile, e.BucketFile)
+	files, err := readFiles(true, e.AccessKeyFile, e.AccessSecretFile, e.BucketFile)
 	if err != nil {
 		return nil, err
 	}
@@ -48,10 +48,11 @@ func (e Minio) CreateDriver() (driver.StorageDriver, error) {
 	if port == "" {
 		return nil, errMissingPort
 	}
+	accessKey, secretKey, bucket := files[0], files[1], files[2]
 	params := s3.DriverParameters{
-		AccessKey:      string(files[0]),
-		SecretKey:      string(files[1]),
-		Bucket:         string(files[2]),
+		AccessKey:      accessKey,
+		SecretKey:      secretKey,
+		Bucket:         bucket,
 		RegionEndpoint: fmt.Sprintf("%s:%s", host, port),
 		Region:         minioRegion,
 	}

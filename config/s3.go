@@ -20,7 +20,7 @@ func endpointURL(region string) string {
 
 // CreateDriver is the Config interface implementation
 func (s S3) CreateDriver() (driver.StorageDriver, error) {
-	files, err := readFiles(s.AccessKeyFile, s.SecretKeyFile, s.RegionFile, s.BucketFile)
+	files, err := readFiles(true, s.AccessKeyFile, s.SecretKeyFile, s.RegionFile, s.BucketFile)
 	if err != nil {
 		return nil, err
 	}

@@ -13,12 +13,12 @@ type Azure struct {
 
 // CreateDriver is the Config interface implementation
 func (a Azure) CreateDriver() (driver.StorageDriver, error) {
-	files, err := readFiles(a.AccountNameFile, a.AccountKeyFile, a.ContainerFile)
+	files, err := readFiles(true, a.AccountNameFile, a.AccountKeyFile, a.ContainerFile)
 	if err != nil {
 		return nil, err
 	}
-	accountNameBytes, accountKeyBytes, containerBytes := files[0], files[1], files[2]
-	return azure.New(string(accountNameBytes), string(accountKeyBytes), string(containerBytes), "")
+	accountName, accountKey, container := files[0], files[1], files[2]
+	return azure.New(accountName, accountKey, container, "")
 }
 
 // Name is the fmt.Stringer interface implementation

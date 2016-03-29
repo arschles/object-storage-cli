@@ -1,8 +1,6 @@
 package config
 
 import (
-	"io/ioutil"
-
 	"github.com/docker/distribution/registry/storage/driver"
 	gcs "github.com/docker/distribution/registry/storage/driver/gcs"
 )
@@ -19,13 +17,15 @@ type GCS struct {
 
 // CreateDriver is the Config interface implementation
 func (g GCS) CreateDriver() (driver.StorageDriver, error) {
-	bucketBytes, err := ioutil.ReadFile(g.BucketFile)
+	files, err := readFiles(true, g.BucketFile)
 	if err != nil {
 		return nil, err
 	}
-	params := make(map[string]interface{})
-	params[bucketParam] = string(bucketBytes)
-	params[keyFileParam] = g.KeyFile
+	bucket := files[0]
+	params := map[string]interface{}{
+		bucketParam:  bucket,
+		keyFileParam: g.KeyFile,
+	}
 	return gcs.FromParameters(params)
 }
 
