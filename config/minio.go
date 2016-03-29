@@ -10,7 +10,8 @@ import (
 )
 
 const (
-	dollar = '$'
+	dollar      = '$'
+	minioRegion = "us-east-1a"
 )
 
 var (
@@ -52,6 +53,7 @@ func (e Minio) CreateDriver() (driver.StorageDriver, error) {
 		SecretKey:      string(files[1]),
 		Bucket:         string(files[2]),
 		RegionEndpoint: fmt.Sprintf("%s:%s", host, port),
+		Region:         minioRegion,
 	}
 	return s3.New(params)
 }
