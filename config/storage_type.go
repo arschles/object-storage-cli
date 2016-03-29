@@ -44,6 +44,6 @@ func StorageTypeFromString(s string) (StorageType, error) {
 	case MinioStorageType.String():
 		return MinioStorageType, nil
 	default:
-		return "", ErrUnknownStorageType{typeStr: s}
+		return StorageType(""), ErrUnknownStorageType{typeStr: s}
 	}
 }
