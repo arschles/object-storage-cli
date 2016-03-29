@@ -1,6 +1,8 @@
-hash: eccbc7bb590c35aaa9595048bbda764dc1c670c4fef7ff60c0f67bccb6c7709d
-updated: 2016-03-29T09:52:14.4733449-07:00
+hash: c804e73e1c927fb036054270e773f97b4cc48438fc32db929b37cc581e3f35da
+updated: 2016-03-29T10:41:40.818605032-07:00
 imports:
+- name: github.com/arschles/assert
+  version: d21ecd4884be33397d1298c3738b2b4937c7f499
 - name: github.com/aws/aws-sdk-go
   version: 49c3892b61af1d4996292a3025f36e4dfa25eaee
   subpackages:
@@ -34,7 +36,7 @@ imports:
 - name: github.com/codegangsta/cli
   version: bc465becccd1d527002fda095fc3c19d9c115029
 - name: github.com/docker/distribution
-  version: 60b9f1756d9f50305faac3e604ed7f58d3ba4b5f
+  version: 19ad02e6ac497f5dee280af38b6f79029c7de2d4
   subpackages:
   - registry/storage/driver
   - registry/storage/driver/azure

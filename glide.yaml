@@ -8,3 +8,4 @@ import:
   - registry/storage/driver/gcs
   - registry/storage/driver/s3-aws
 - package: github.com/kelseyhightower/envconfig
+- package: github.com/arschles/assert
