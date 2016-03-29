@@ -2,6 +2,9 @@ package: github.com/arschles/object-storage-cli
 import:
 - package: github.com/codegangsta/cli
 - package: github.com/docker/distribution
+  repo: https://github.com/deis/distribution
+  version: 193356763efd27a744a0e776d3ce812a74c20673
+  vcs: git
   subpackages:
   - registry/storage/driver
   - registry/storage/driver/azure
@@ -9,3 +12,29 @@ import:
   - registry/storage/driver/s3-aws
 - package: github.com/kelseyhightower/envconfig
 - package: github.com/arschles/assert
+- package: google.golang.org/cloud
+  version: 2400193c85c3561d13880d34e0e10c4315bb02af
+  subpackages:
+  - storage
+  - compute/metadata
+  - internal
+  - internal/opts
+- package: google.golang.org/api
+  version: fceeaa645c4015c833842e6ed6052b2dda667079
+  subpackages:
+  - storage/v1
+  - googleapi
+  - googleapi/internal/uritemplates
+- package: golang.org/x/net
+  version: c2528b2dd8352441850638a8bb678c2ad056fd3e
+  subpackages:
+  - context
+  - trace
+  - internal/timeseries
+- package: golang.org/x/oauth2
+  version: 8914e5017ca260f2a3a1575b1e6868874050d95e
+  subpackages:
+  - google
+  - jwt
+  - internal
+  - jws

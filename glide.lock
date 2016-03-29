@@ -1,5 +1,5 @@
-hash: c804e73e1c927fb036054270e773f97b4cc48438fc32db929b37cc581e3f35da
-updated: 2016-03-29T10:41:40.818605032-07:00
+hash: f9d81af83f2ae423545f0e20b78b6de738e0a4d5036e1ffc7bff38831f36f602
+updated: 2016-03-29T14:19:15.194477893-07:00
 imports:
 - name: github.com/arschles/assert
   version: d21ecd4884be33397d1298c3738b2b4937c7f499
@@ -7,36 +7,42 @@ imports:
   version: 49c3892b61af1d4996292a3025f36e4dfa25eaee
   subpackages:
   - aws
-  - aws/awserr
-  - aws/awsutil
-  - aws/client
-  - aws/client/metadata
-  - aws/corehandlers
-  - aws/credentials
-  - aws/credentials/ec2rolecreds
-  - aws/defaults
-  - aws/ec2metadata
-  - aws/request
-  - aws/session
   - private/endpoints
   - private/protocol
-  - private/protocol/query
-  - private/protocol/query/queryutil
-  - private/protocol/rest
-  - private/protocol/restxml
-  - private/protocol/xml/xmlutil
   - private/signer/v4
   - private/waiter
   - service/cloudfront/sign
   - service/s3
+  - aws/awserr
+  - aws/credentials
+  - aws/credentials/ec2rolecreds
+  - aws/ec2metadata
+  - aws/request
+  - aws/session
+  - aws/client
+  - aws/client/metadata
+  - aws/awsutil
+  - aws/corehandlers
+  - aws/defaults
+  - private/protocol/restxml
+  - private/protocol/query
+  - private/protocol/rest
+  - private/protocol/xml/xmlutil
+  - private/protocol/query/queryutil
 - name: github.com/Azure/azure-sdk-for-go
   version: 95361a2573b1fa92a00c5fc2707a80308483c6f9
   subpackages:
   - storage
+- name: github.com/bradfitz/http2
+  version: f8202bc903bda493ebba4aa54922d78430c2c42f
+  subpackages:
+  - hpack
 - name: github.com/codegangsta/cli
   version: bc465becccd1d527002fda095fc3c19d9c115029
 - name: github.com/docker/distribution
-  version: 19ad02e6ac497f5dee280af38b6f79029c7de2d4
+  version: 193356763efd27a744a0e776d3ce812a74c20673
+  repo: https://github.com/deis/distribution
+  vcs: git
   subpackages:
   - registry/storage/driver
   - registry/storage/driver/azure
@@ -50,7 +56,7 @@ imports:
 - name: github.com/go-ini/ini
   version: afbd495e5aaea13597b5e14fe514ddeaa4d76fc3
 - name: github.com/golang/protobuf
-  version: 8d92cf5fc15a4382f8964b08e1f42a75c0591aa3
+  version: 0f7a9caded1fb3c9cc5a9b4bcf2ff633cc8ae644
   subpackages:
   - proto
 - name: github.com/gorilla/context
@@ -63,59 +69,52 @@ imports:
   version: cea086319492c3940683ea5e122aa5de70a33923
 - name: github.com/Sirupsen/logrus
   version: 55eb11d21d2a31a3cc93838241d04800f52e823d
-  subpackages:
-  - formatters/logstash
 - name: golang.org/x/net
-  version: 4876518f9e71663000c348837735820161a42df7
+  version: c2528b2dd8352441850638a8bb678c2ad056fd3e
   subpackages:
   - context
-  - context/ctxhttp
-  - http2
-  - http2/hpack
-  - internal/timeseries
   - trace
+  - internal/timeseries
+  - context/ctxhttp
 - name: golang.org/x/oauth2
-  version: 045497edb6234273d67dbc25da3f2ddbc4c4cacf
+  version: 8914e5017ca260f2a3a1575b1e6868874050d95e
   subpackages:
   - google
+  - jwt
   - internal
   - jws
-  - jwt
 - name: google.golang.org/api
-  version: 9bf6e6e569ff057f75d9604a46c52928f17d2b54
+  version: fceeaa645c4015c833842e6ed6052b2dda667079
   subpackages:
-  - gensupport
+  - storage/v1
   - googleapi
   - googleapi/internal/uritemplates
-  - storage/v1
+  - gensupport
 - name: google.golang.org/appengine
-  version: 12d5545dc1cfa6047a286d5e853841b6471f4c19
+  version: 41265fb44deca5c3b05a946d5db1f54ae54fe67e
   subpackages:
+  - urlfetch
   - internal
+  - internal/urlfetch
   - internal/app_identity
+  - internal/modules
   - internal/base
   - internal/datastore
   - internal/log
-  - internal/modules
   - internal/remote_api
-  - urlfetch
-  - internal/urlfetch
 - name: google.golang.org/cloud
-  version: 975617b05ea8a58727e6c1a06b6161ff4185a9f2
+  version: 2400193c85c3561d13880d34e0e10c4315bb02af
   subpackages:
+  - storage
   - compute/metadata
   - internal
   - internal/opts
-  - storage
 - name: google.golang.org/grpc
-  version: d3ddb4469d5a1b949fc7a7da7c1d6a0d1b6de994
+  version: 91c8b79535eb6045d70ec671d302213f88a3ab95
   subpackages:
   - codes
   - credentials
   - grpclog
-  - internal
   - metadata
-  - naming
-  - peer
   - transport
 devImports: []
