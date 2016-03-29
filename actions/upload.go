@@ -44,9 +44,6 @@ func Upload(c *cli.Context) {
 	ctx := context.Background()
 	fw, err := driver.Writer(ctx, remote, false)
 	if err != nil {
-		if err := fw.Cancel(); err != nil {
-			log.Printf("Cancelling the write operation failed while finding remote object %s (%s)", remote, err)
-		}
 		log.Fatalf("Error finding remote object %s (%s)", remote, err)
 	}
 	defer fw.Close()
