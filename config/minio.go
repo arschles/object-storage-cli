@@ -10,8 +10,7 @@ import (
 )
 
 const (
-	dollar      = '$'
-	minioRegion = "us-east-1a"
+	dollar = '$'
 )
 
 var (
@@ -19,12 +18,14 @@ var (
 	errMissingPort = errors.New("missing s3 port")
 )
 
+// Minio is the Config implementation for the Minio client
 type Minio struct {
 	AccessKeyFile    string `envconfig:"ACCESS_KEY_FILE" default:"/var/run/secrets/deis/objectstore/creds/accesskey"`
 	AccessSecretFile string `envconfig:"ACCESS_SECRET_FILE" default:"/var/run/secrets/deis/objectstore/creds/secretkey"`
 	BucketFile       string `envconfig:"BUCKET_FILE" default:"/var/run/secrets/deis/objectstore/creds/bucket"`
 	S3Host           string `envconfig:"S3_HOST" default:"$DEIS_MINIO_SERVICE_HOST"`
 	S3Port           string `envconfig:"S3_PORT" default:"$DEIS_MINIO_SERVICE_PORT"`
+	Region           string `envconfig:"REGION" default:"us-east-1"`
 }
 
 func parseEnvVar(val string) string {
@@ -54,7 +55,7 @@ func (e Minio) CreateDriver() (driver.StorageDriver, error) {
 		SecretKey:      secretKey,
 		Bucket:         bucket,
 		RegionEndpoint: fmt.Sprintf("%s:%s", host, port),
-		Region:         minioRegion,
+		Region:         e.Region,
 	}
 	return s3.New(params)
 }
