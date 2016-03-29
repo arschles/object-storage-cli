@@ -20,11 +20,7 @@ func main() {
 		},
 	}
 	app.Commands = []cli.Command{
-		cli.Command{
-			Name:      "download",
-			ShortName: "dl",
-			Action:    actions.Download,
-		},
+		actions.DownloadCommand,
 	}
 	app.Run(os.Args)
 }
