@@ -19,7 +19,7 @@ var (
 	}
 )
 
-// Download is the cli handler for "download" command
+// Upload is the cli handler for "download" command
 func Upload(c *cli.Context) {
 	args := c.Args()
 	if len(args) < 2 {
