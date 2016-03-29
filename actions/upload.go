@@ -1,9 +1,8 @@
 package actions
 
 import (
-	"io"
+	"io/ioutil"
 	"log"
-	"os"
 
 	"github.com/arschles/object-storage-cli/config"
 	"github.com/codegangsta/cli"
@@ -37,24 +36,13 @@ func Upload(c *cli.Context) {
 		log.Fatal(err)
 	}
 
-	fd, err := os.Open(local)
+	fBytes, err := ioutil.ReadFile(local)
 	if err != nil {
-		log.Fatalf("Error opening local file %s for read (%s)", local, err)
+		log.Fatalf("Error reading local file %s (%s)", local, err)
 	}
 	ctx := context.Background()
-	fw, err := driver.Writer(ctx, remote, false)
-	if err != nil {
-		log.Fatalf("Error finding remote object %s (%s)", remote, err)
-	}
-	defer fw.Close()
-	if _, err := io.Copy(fw, fd); err != nil {
-		if err := fw.Cancel(); err != nil {
-			log.Printf("Cancelling the write operation failed while writing %s to the remote object %s (%s)", local, remote, err)
-		}
-		log.Fatalf("Error copying local %s to remote %s (%s)", local, remote, err)
-	}
-	if err := fw.Commit(); err != nil {
-		log.Fatalf("Error committing local %s to remote %s transfer operation (%s)", local, remote, err)
+	if err := driver.PutContent(ctx, remote, fBytes); err != nil {
+		log.Fatalf("Error writing remote object %s (%s)", remote, err)
 	}
 	log.Printf("Successfully copied %s to %s", remote, local)
 }
