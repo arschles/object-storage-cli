@@ -17,6 +17,7 @@ type Config interface {
 	CreateDriver() (driver.StorageDriver, error)
 }
 
+// ErrUnsupportedStorageType is the error returned when a storage type is given that is not currently supported
 type ErrUnsupportedStorageType struct {
 	st StorageType
 }
