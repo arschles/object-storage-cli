@@ -17,4 +17,4 @@ build-mac:
 	${DEV_ENV_PREFIX} -e GOOS=darwin -e GOARCH=amd64 ${DEV_ENV_IMAGE} go build -tags=${TAGS} -o ${BINARY_NAME}
 
 test:
-	${DEV_ENV_CMD} go test $$(glide nv)
+	${DEV_ENV_CMD} go test -tags=${TAGS} $$(glide nv)
