@@ -6,7 +6,9 @@ import (
 	"os"
 
 	"github.com/docker/distribution/registry/storage/driver"
-	s3 "github.com/docker/distribution/registry/storage/driver/s3-aws"
+	"github.com/docker/distribution/registry/storage/driver/factory"
+	// this blank import is used to register the S3 driver with the storage driver factory
+	_ "github.com/docker/distribution/registry/storage/driver/s3-aws"
 )
 
 const (
@@ -26,6 +28,8 @@ type Minio struct {
 	S3Host           string `envconfig:"S3_HOST" default:"$DEIS_MINIO_SERVICE_HOST"`
 	S3Port           string `envconfig:"S3_PORT" default:"$DEIS_MINIO_SERVICE_PORT"`
 	Region           string `envconfig:"REGION" default:"us-east-1"`
+	Secure           bool   `envconfig:"SECURE" default:"false"`
+	V4Auth           bool   `envconfig:"V4_AUTH" default:"true"`
 }
 
 func parseEnvVar(val string) string {
@@ -49,15 +53,17 @@ func (e Minio) CreateDriver() (driver.StorageDriver, error) {
 	if port == "" {
 		return nil, errMissingPort
 	}
-	accessKey, secretKey, bucket := files[0], files[1], files[2]
-	params := s3.DriverParameters{
-		AccessKey:      accessKey,
-		SecretKey:      secretKey,
-		Bucket:         bucket,
-		RegionEndpoint: fmt.Sprintf("%s:%s", host, port),
-		Region:         e.Region,
+	key, secret, bucket := files[0], files[1], files[2]
+	params := map[string]interface{}{
+		"accesskey":      key,
+		"secretkey":      secret,
+		"region":         e.Region,
+		"bucket":         bucket,
+		"regionendpoint": fmt.Sprintf("http://%s:%s", host, port),
+		"secure":         e.Secure,
+		"v4auth":         e.V4Auth,
 	}
-	return s3.New(params)
+	return factory.Create("s3aws", params)
 }
 
 // String is the fmt.Stringer interface implementation

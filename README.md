@@ -39,6 +39,8 @@ It gets the location information from environment variables, and assumes that an
 - `S3_HOST` (`$DEIS_MINIO_SERVICE_HOST`)
 - `S3_PORT` (`$DEIS_MINIO_SERVICE_PORT`)
 - `REGION` (`us-east-1`)
+- `SECURE` (`false`)
+- `V4_AUTH` (`true`)
 - `ACCESS_KEY_FILE` (`/var/run/secrets/deis/objectstore/creds/accesskey`)
 - `ACCESS_SECRET_FILE` (`/var/run/secrets/deis/objectstore/creds/secretkey`)
 - `BUCKET_FILE` (`/var/run/secrets/deis/objectstore/creds/bucket`)

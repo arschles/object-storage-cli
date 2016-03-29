@@ -2,7 +2,9 @@ package config
 
 import (
 	"github.com/docker/distribution/registry/storage/driver"
-	azure "github.com/docker/distribution/registry/storage/driver/azure"
+	"github.com/docker/distribution/registry/storage/driver/factory"
+	// this blank import is used to register the Azure driver with the storage driver factory
+	_ "github.com/docker/distribution/registry/storage/driver/azure"
 )
 
 // Azure is the Config implementation for the Azure client
@@ -19,7 +21,12 @@ func (a Azure) CreateDriver() (driver.StorageDriver, error) {
 		return nil, err
 	}
 	accountName, accountKey, container := files[0], files[1], files[2]
-	return azure.New(accountName, accountKey, container, "")
+	params := map[string]interface{}{
+		"accountname": accountName,
+		"accountkey":  accountKey,
+		"container":   container,
+	}
+	return factory.Create("azure", params)
 }
 
 // Name is the fmt.Stringer interface implementation

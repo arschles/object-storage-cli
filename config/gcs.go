@@ -2,7 +2,9 @@ package config
 
 import (
 	"github.com/docker/distribution/registry/storage/driver"
-	gcs "github.com/docker/distribution/registry/storage/driver/gcs"
+	"github.com/docker/distribution/registry/storage/driver/factory"
+	// this blank import is used to register the GCS driver with the storage driver factory
+	_ "github.com/docker/distribution/registry/storage/driver/gcs"
 )
 
 const (
@@ -27,7 +29,7 @@ func (g GCS) CreateDriver() (driver.StorageDriver, error) {
 		bucketParam:  bucket,
 		keyFileParam: g.KeyFile,
 	}
-	return gcs.FromParameters(params)
+	return factory.Create("gcs", params)
 }
 
 // String is the fmt.Stringer interface implementation

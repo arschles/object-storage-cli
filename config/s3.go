@@ -1,10 +1,10 @@
 package config
 
 import (
-	"fmt"
-
 	"github.com/docker/distribution/registry/storage/driver"
-	s3 "github.com/docker/distribution/registry/storage/driver/s3-aws"
+	"github.com/docker/distribution/registry/storage/driver/factory"
+	// this blank import is used to register the S3 driver with the storage driver factory
+	_ "github.com/docker/distribution/registry/storage/driver/s3-aws"
 )
 
 // S3 is the Config implementation for the S3 client
@@ -15,25 +15,20 @@ type S3 struct {
 	BucketFile    string `envconfig:"BUCKET_FILE" default:"/var/run/secrets/deis/objectstore/creds/bucket"`
 }
 
-func endpointURL(region string) string {
-	return fmt.Sprintf("s3-%s.amazonaws.com", region)
-}
-
 // CreateDriver is the Config interface implementation
 func (s S3) CreateDriver() (driver.StorageDriver, error) {
 	files, err := readFiles(true, s.AccessKeyFile, s.SecretKeyFile, s.RegionFile, s.BucketFile)
 	if err != nil {
 		return nil, err
 	}
-	keyBytes, secretBytes, regionBytes, bucketBytes := files[0], files[1], files[2], files[3]
-	params := s3.DriverParameters{
-		AccessKey:      string(keyBytes),
-		SecretKey:      string(secretBytes),
-		Bucket:         string(bucketBytes),
-		Region:         string(regionBytes),
-		RegionEndpoint: endpointURL(string(regionBytes)),
+	key, secret, region, bucket := files[0], files[1], files[2], files[3]
+	params := map[string]interface{}{
+		"accessKey": key,
+		"secretKey": secret,
+		"region":    region,
+		"bucket":    bucket,
 	}
-	return s3.New(params)
+	return factory.Create("s3aws", params)
 }
 
 // String is the fmt.Stringer interface implementation
