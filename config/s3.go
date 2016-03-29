@@ -34,3 +34,8 @@ func (s S3) CreateDriver() (driver.StorageDriver, error) {
 	}
 	return s3.New(params)
 }
+
+// String is the fmt.Stringer interface implementation
+func (s S3) String() string {
+	return S3StorageType.String()
+}

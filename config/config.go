@@ -13,6 +13,7 @@ const (
 
 // Config is the generic interface from which a storage driver can be created
 type Config interface {
+	fmt.Stringer
 	CreateDriver() (driver.StorageDriver, error)
 }
 

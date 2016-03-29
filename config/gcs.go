@@ -28,3 +28,8 @@ func (g GCS) CreateDriver() (driver.StorageDriver, error) {
 	params[keyFileParam] = g.KeyFile
 	return gcs.FromParameters(params)
 }
+
+// String is the fmt.Stringer interface implementation
+func (g GCS) String() string {
+	return GCSStorageType.String()
+}

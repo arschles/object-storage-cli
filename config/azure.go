@@ -20,3 +20,8 @@ func (a Azure) CreateDriver() (driver.StorageDriver, error) {
 	accountNameBytes, accountKeyBytes, containerBytes := files[0], files[1], files[2]
 	return azure.New(string(accountNameBytes), string(accountKeyBytes), string(containerBytes), "")
 }
+
+// Name is the fmt.Stringer interface implementation
+func (a Azure) String() string {
+	return AzureStorageType.String()
+}

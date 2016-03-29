@@ -55,3 +55,8 @@ func (e Empty) CreateDriver() (driver.StorageDriver, error) {
 	}
 	return s3.New(params)
 }
+
+// String is the fmt.Stringer interface implementation
+func (e Empty) String() string {
+	return EmptyStorageType.String()
+}
