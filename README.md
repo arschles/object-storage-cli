@@ -18,7 +18,7 @@ If the storage type is `gcs`, the CLI reads two files which specify the bucket a
 
 - `KEY_FILE` (`/var/run/secrets/deis/objectstore/creds/key.json`)
 	- This file should be a JSON encoded object and contain a `project-id` key, which specifies the GCS project ID
-- `BUCKET_FILE` (`/var/run/secrets/deis/objectstore/creds/builder-bucket`)
+- `BUCKET_FILE` (`/var/run/secrets/deis/objectstore/creds/bucket`)
 
 ## `azure`
 
