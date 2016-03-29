@@ -22,7 +22,7 @@ var (
 func Upload(c *cli.Context) {
 	args := c.Args()
 	if len(args) < 2 {
-		log.Fatalf("This command should be called as 'objstorage upload $LOCAL_PATH $REMOTE_PATH'")
+		log.Fatalf("This command should be called as 'upload $LOCAL_PATH $REMOTE_PATH'")
 	}
 	local := args[0]
 	remote := args[1]

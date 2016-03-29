@@ -23,12 +23,11 @@ var (
 func Download(c *cli.Context) {
 	args := c.Args()
 	if len(args) < 2 {
-		log.Fatalf("This command should be called as 'objstorage download $REMOTE_PATH $LOCAL_PATH'")
+		log.Fatalf("This command should be called as 'download $REMOTE_PATH $LOCAL_PATH'")
 	}
 
 	remote := args[0]
 	local := args[1]
-	log.Printf("downloading %s to %s", remote, local)
 
 	conf, err := config.FromStorageTypeString(c.GlobalString(config.StorageTypeFlag))
 	if err != nil {
