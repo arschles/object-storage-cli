@@ -18,14 +18,17 @@ const (
 	EmptyStorageType StorageType = ""
 )
 
-type ErrUnsupportedStorageType struct {
+// ErrUnknownStorageType is an error that indicates that a given storage type string is unknown
+type ErrUnknownStorageType struct {
 	typeStr string
 }
 
-func (e ErrUnsupportedStorageType) Error() string {
-	return fmt.Sprintf("Unsupported storage type %s", e.typeStr)
+// Error is the error interface implementation
+func (e ErrUnknownStorageType) Error() string {
+	return fmt.Sprintf("Unknown storage type %s", e.typeStr)
 }
 
+// StorageTypeFromString attempts to convert s into a StorageType value. Returns ErrUnknownStorageType if s doesn't correspond to any supported storage type
 func StorageTypeFromString(s string) (StorageType, error) {
 	switch s {
 	case S3StorageType.String():
@@ -37,6 +40,6 @@ func StorageTypeFromString(s string) (StorageType, error) {
 	case EmptyStorageType.String():
 		return EmptyStorageType, nil
 	default:
-		return EmptyStorageType, ErrUnsupportedStorageType{typeStr: s}
+		return EmptyStorageType, ErrUnknownStorageType{typeStr: s}
 	}
 }
