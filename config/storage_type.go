@@ -18,8 +18,8 @@ const (
 	GCSStorageType StorageType = "gcs"
 	// AzureStorageType is the storage type for Azure Blob Storage. See https://azure.microsoft.com/en-us/services/storage/ for more information
 	AzureStorageType StorageType = "azure"
-	// MinioStorageType is the storage type for Minoi. See https://minio.io/ for more information
-	MinioStorageType StorageType = ""
+	// MinioStorageType is the storage type for Minio. See https://minio.io/ for more information
+	MinioStorageType StorageType = "minio"
 )
 
 // ErrUnknownStorageType is an error that indicates that a given storage type string is unknown
