@@ -15,11 +15,11 @@ var (
 	UploadCommand = cli.Command{
 		Name:      "upload",
 		ShortName: "up",
-		Action:    Download,
+		Action:    Upload,
 	}
 )
 
-// Upload is the cli handler for "download" command
+// Upload is the cli handler for "upload" command
 func Upload(c *cli.Context) {
 	args := c.Args()
 	if len(args) < 2 {
