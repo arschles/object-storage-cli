@@ -13,8 +13,8 @@ import (
 var (
 	// UploadCommand is the cli.Command for use in the top level app commands list
 	UploadCommand = cli.Command{
-		Name:      "download",
-		ShortName: "dl",
+		Name:      "upload",
+		ShortName: "up",
 		Action:    Download,
 	}
 )

@@ -21,6 +21,7 @@ func main() {
 	}
 	app.Commands = []cli.Command{
 		actions.DownloadCommand,
+		actions.UploadCommand,
 	}
 	app.Run(os.Args)
 }
