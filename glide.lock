@@ -1,5 +1,5 @@
-hash: b467480950f5c240cbcc59f11f9da126d91248105aac128a5d5357fa16ed8f16
-updated: 2016-03-28T16:16:38.359115952-07:00
+hash: eccbc7bb590c35aaa9595048bbda764dc1c670c4fef7ff60c0f67bccb6c7709d
+updated: 2016-03-29T09:52:14.4733449-07:00
 imports:
 - name: github.com/aws/aws-sdk-go
   version: 49c3892b61af1d4996292a3025f36e4dfa25eaee
@@ -41,10 +41,10 @@ imports:
   - registry/storage/driver/gcs
   - registry/storage/driver/s3-aws
   - context
+  - uuid
   - registry/storage/driver/base
   - registry/storage/driver/factory
   - registry/client/transport
-  - uuid
 - name: github.com/go-ini/ini
   version: afbd495e5aaea13597b5e14fe514ddeaa4d76fc3
 - name: github.com/golang/protobuf
@@ -57,6 +57,8 @@ imports:
   version: e444e69cbd2e2e3e0749a2f3c717cec491552bbf
 - name: github.com/jmespath/go-jmespath
   version: 0b12d6b521d83fc7f755e7cfc1b1fbdd35a01a74
+- name: github.com/kelseyhightower/envconfig
+  version: cea086319492c3940683ea5e122aa5de70a33923
 - name: github.com/Sirupsen/logrus
   version: 55eb11d21d2a31a3cc93838241d04800f52e823d
   subpackages:
