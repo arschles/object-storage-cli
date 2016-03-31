@@ -3,7 +3,7 @@ import:
 - package: github.com/codegangsta/cli
 - package: github.com/docker/distribution
   repo: https://github.com/deis/distribution
-  version: 193356763efd27a744a0e776d3ce812a74c20673
+  version: d90ad66106dab9137e450d426c12603e8feb4b65
   vcs: git
   subpackages:
   - registry/storage/driver

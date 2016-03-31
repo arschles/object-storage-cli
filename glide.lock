@@ -40,7 +40,7 @@ imports:
 - name: github.com/codegangsta/cli
   version: bc465becccd1d527002fda095fc3c19d9c115029
 - name: github.com/docker/distribution
-  version: 193356763efd27a744a0e776d3ce812a74c20673
+  version: d90ad66106dab9137e450d426c12603e8feb4b65
   repo: https://github.com/deis/distribution
   vcs: git
   subpackages:
